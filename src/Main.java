@@ -83,7 +83,7 @@ public class Main {
 
     public static void calculateSalaryOneDepartment(Employee[] Employee) {
         for (Employee employee : Employee) {
-            if (employee.getDepartment() == 1);
+            if (employee.getDepartment() == 1) ;
 
 
         }
