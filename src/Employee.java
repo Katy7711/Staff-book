@@ -1,17 +1,12 @@
+import java.io.OptionalDataException;
+
 public class Employee {
 
 
-    static Employee employee1 = new Employee("Иванов Иван Иванович", 1, 35000);
-    static Employee employee2 = new Employee("Петров Сергей Александрович", 1, 45600);
-    static Employee employee3 = new Employee("Соколова Наталья Владимировна", 1, 30200);
-    static Employee employee4 = new Employee("Быков Андрей Павлович", 1, 34500);
-    static Employee employee5 = new Employee("Волков Александр Борисович", 1, 47800);
-
-
-
+    public static OptionalDataException employee;
     private final String fullName;
     private int department;
-    private int salary;
+    public int salary;
     private final int id;
 
     private static int counter = 0;
@@ -44,6 +39,20 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
+                ", department=" + department +
+                ", salary=" + salary +
+                ", id=" + id +
+                '}';
+    }
+
+
+
 }
 
 
