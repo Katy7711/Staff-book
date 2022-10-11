@@ -1,9 +1,7 @@
-import java.io.OptionalDataException;
 
 public class Employee {
 
 
-    public static OptionalDataException employee;
     private final String fullName;
     private int department;
     public int salary;
@@ -46,6 +44,14 @@ public class Employee {
         return "Employee{" +
                 "fullName='" + fullName + '\'' +
                 ", department=" + department +
+                ", salary=" + salary +
+                ", id=" + id +
+                '}';
+    }
+
+    public String print() {
+        return "Employee{" +
+                "fullName='" + fullName + '\'' +
                 ", salary=" + salary +
                 ", id=" + id +
                 '}';
