@@ -43,11 +43,10 @@ public class Main {
     public static void calculateSum(Employee[] Employee) {
         int sum = 0;
         for (Employee employee : Employee) {
-            if (employee.getSalary() != 0)
-            {
+            if (employee != null)
                 sum += employee.getSalary();
             }
-        }
+
         System.out.println("сумма затрат на зарплаты в месяц: " + sum + " рублей");
     }
 
@@ -55,7 +54,7 @@ public class Main {
         int max = employees[0].getSalary();
         String fullName = "сотрудник не найден";
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0)
+            if (employee != null)
             {
                 if (employee.getSalary() > max) {
                     max = employee.getSalary();
@@ -70,7 +69,7 @@ public class Main {
         int min = employees[0].getSalary();
         String fullName = "сотрудник не найден";
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0)
+            if (employee != null)
             {
                 if (employee.getSalary() < min) {
                     min = employee.getSalary();
@@ -86,7 +85,7 @@ public class Main {
         int sum = 0;
         int meanSalary = 0;
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0)
+            if (employee != null)
             {
                 sum += employee.getSalary();
                 meanSalary = sum / employees.length;
@@ -98,7 +97,7 @@ public class Main {
     public static void indexingSalary(Employee[] employees, int percent) {
         int salary;
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0)
+            if (employee != null)
             {
                 salary = employee.getSalary() / 100 * percent + employee.getSalary();
                 employee.setSalary(salary);
@@ -111,7 +110,7 @@ public class Main {
     public static void calculateSalaryOneDepartment(Employee[] employees, int department) {
         int sum = 0;
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0 && employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 sum += employee.getSalary();
             }
         }
@@ -122,7 +121,7 @@ public class Main {
         int max = 0;
         String fullName = "сотрудник не найден";
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department && employee.getSalary() != 0) {
+            if (employee != null && employee.getDepartment() == department) {
                 if (employee.getSalary() > max) {
                     max = employee.getSalary();
                     fullName = employee.getFullName();
@@ -134,29 +133,30 @@ public class Main {
 
     public static void calculateMinSalaryDepartment(Employee[] employees, int department) {
         int min = Integer.MAX_VALUE;
-        String fullName = "сотрудник не найден";
+        Employee employeeWithMinSalary = null;
         for (Employee employee : employees) {
-            if (employee.getDepartment() == department && employee.getSalary() != 0) {
-                if (employee.getSalary() < min) {
-                    min = employee.getSalary();
-                    fullName = employee.getFullName();
-                }
+            if (employee != null && employee.getDepartment() == department) {
+                if (employee.getSalary() < min)
+                    employeeWithMinSalary = employee;
+
+                // вот тут я попыталась сделать как вы сказали, но у меня неправильно выводится, где ошибка?
+                System.out.println("сотрудник с минимальной зарплатой: " + employeeWithMinSalary);
             }
         }
-        System.out.println("сотрудник с минимальной зарплатой: " + fullName);
     }
+
 
     public static void calculateMeanSalaryDepartment(Employee[] employees, int department) {
         int sum = 0;
         int person = 0;
         int meanSalary = 0;
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0 && employee.getDepartment() == department) {
+            if (employee != null && employee.getDepartment() == department) {
                 sum += employee.getSalary();
-                person += employee.getDepartment();
+                person += employee.getDepartment(); }
                 meanSalary = sum / person;
             }
-        }
+
         System.out.println("среднее значение зарплат -  " + meanSalary + " рублей");
     }
 
@@ -170,14 +170,14 @@ public class Main {
 
     public static void employeesSalaryMoreThanNumber(Employee[] employees, int number) {
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0 && employee.getSalary() >= number)
+            if (employee != null && employee.getSalary() >= number)
                 System.out.println(employee.print());
         }
     }
 
     public static void employeesSalaryLessThanNumber (Employee[] employees, int number) {
         for (Employee employee : employees) {
-            if (employee.getSalary() != 0 && employee.getSalary() < number)
+            if (employee != null && employee.getSalary() < number)
                 System.out.println(employee.print());
 
         }
